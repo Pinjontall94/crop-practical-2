@@ -84,3 +84,6 @@ SNP chip can be used for mapping, genotyping, LD (isn't that just mapping?)
 
 
 file persample
+
+winter types reduced genetic diversity since the harsher winter introduced
+genetic bottlenecks
