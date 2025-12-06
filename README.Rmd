@@ -73,7 +73,7 @@ Flowering Type (FT): Genotype had no significant effect on flowering type
 3. Doing the PCAs
 4. Calculating the Multi-Trait Score
 5. The presentation itself obviously
-6. Probably loads more shit I’m not thinking of rn
+6. ANALYZING THE KASP DATA... Somehow?
 
 ## Questions (bad) :
  
