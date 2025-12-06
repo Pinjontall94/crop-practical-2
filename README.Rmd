@@ -1,6 +1,6 @@
 ---
 title: "README"
-author: "Alisa Anjulie / Sammi Johnson"
+author: "Alisa Röring / Sammi Johnson"
 date: "2025-12-05"
 output: html_document
 ---
@@ -10,6 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 # Notes
+
+## TO-DO:
+ 
+- Give weights to traits for multi-trait score (Which traits are more important than others)
+- Find out if lower or higher plant height is best for winter rape seed
+- Discuss what to do about the Flowering Times
+- Write a script to calculate the multi-trait-score
+- Decide what kind of PCAs we want to do
+- ???
+
 
 ## Primary objectives:
 - Evaluate multiple genotypes based on their traits
@@ -59,21 +69,18 @@ I excluded them because the genotype had no significant effect on the trait (Flo
 Flowering Type (FT): Genotype had no significant effect on flowering type
 
 
+## NEW: KASP ANALYSIS
+
+- AA -> RLM4
+- CC -> RLM7 or RLM9
+- AC -> Carries all 3 but we only have homozygotes I think?
+
 
 ## What I did so far:
  
 - Extracted BLUPS and EBLUPS for the relevant traits [Update: Included Thursday Datsets]
 - Calculated Means for FT 
 - Put the data into an excel file for overview
-
-## What needs to be done:
- 
-1. Deciding which PCAs are useful and relevant
-2. Sorting and categorizing traits to decide which will be used in which PCA
-3. Doing the PCAs
-4. Calculating the Multi-Trait Score
-5. The presentation itself obviously
-6. ANALYZING THE KASP DATA... Somehow?
 
 ## Questions (bad) :
  
