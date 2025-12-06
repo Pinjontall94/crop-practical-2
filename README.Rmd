@@ -44,26 +44,26 @@ Corrects for:
 Only traits with a significant genotype effect (p < 0.05)
  
 Included traits (BLUP/EBLUP used):
-- SQI (Seed Quality Index) this I have calculated using the measured traits from the seed quality sheet they provided
+- SQI (Seed Quality Index) this I have calculated using the measured traits from the seed quality sheet they provided [Updated with Sarah's input!]
 - CCM (Chlorophyll Content)
 - HGW (Hundred Grain Weight)
 - Fresh Mass (FM) 
   - "After sampling" was incomplete and I left it out because I didn't see the use of it.
 - Dry Weight (DW)
-- Plant Height (PH) 
-  - Not sure about this one, I extracted the BLUPs and EBLUPs… differences were significant too, but is it really a genotypical trait or an environmental one instead?
+- Plant Height (PH)
+- BBCH
 
 ## Traits Excluded from the Multi-Trait Score
 I excluded them because the genotype had no significant effect on the trait (Flowering Time) or because I was uncertain.
  
 Flowering Type (FT): Genotype had no significant effect on flowering type
-BBCH stage: See questions below
+
 
 
 ## What I did so far:
  
-- Extracted BLUPS and EBLUPS for the relevant traits
-- Calculated Means for FT and BBCH in case we want to use them for PCA
+- Extracted BLUPS and EBLUPS for the relevant traits [Update: Included Thursday Datsets]
+- Calculated Means for FT 
 - Put the data into an excel file for overview
 
 ## What needs to be done:
@@ -87,7 +87,7 @@ BBCH stage: See questions below
 - How do we handle this trait? Is it influenced strongly genetically or is it environmental?
 - Is it a performance trait? Or a diversity trait? Phenological diversity vs perfomance quality?
 - Is higher BBCH = Better? Or should it only be included in a developmental PCA?
-- Honestly same questions regarding Plant Height. But isn't BBCH ordinal and PH continuous??
+- Is smaller plant height better?
 
 
 
