@@ -5,6 +5,8 @@ library(stringr)
 library(adegenet)
 library(hierfstat)
 
+# setwd("Practical 2/") # or Ctrl-Shift-h
+
 kasp_dec3_raw <- read_excel("KASP shit/2025-12-03_081443.xlsx")
 kasp_dec4_raw <- read_excel("KASP shit/2025-12-04_084604.xlsx")
 kasp_mk130_dna <- read_excel("KASP shit/MK130_DNA_Nov2025_second_expierments_011_27_2025.xlsx")
@@ -46,7 +48,7 @@ snp_trim <- snp %>%
 indivs <- as.character(rownames(snp_trim))
 populations <- as.character(snp_trim$type)
 pflzn %>%
-  mutate(pflzn$type = populations)
+  mutate(type = populations)
 
 # trim off type (we'll use these extracted fields for genind instantiation)
 snp_2_genind <- snp_trim %>%
