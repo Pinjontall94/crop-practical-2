@@ -1,6 +1,7 @@
 library(readxl)
 library(dplyr)
 library(tidyr)
+library(stringr)
 library(adegenet)
 library(hierfstat)
 
@@ -8,11 +9,21 @@ kasp_dec3_raw <- read_excel("KASP shit/2025-12-03_081443.xlsx")
 kasp_dec4_raw <- read_excel("KASP shit/2025-12-04_084604.xlsx")
 kasp_mk130_dna <- read_excel("KASP shit/MK130_DNA_Nov2025_second_expierments_011_27_2025.xlsx")
 
+
 pflzn <- data.frame(
   accessions = c("BnASSYST_120", "BnASSYST_145", "BnASSYST_210", "BnASSYST_271", "BnASSYST_419", "BnASSYST_424"),
   name       = c("Darmor",       "Hokkai 3-Go",  "RED RUSSIAN",  "Liho",         "Angus",        "Conqueror Bronze Green Top"),
   type       = c("Winter OSR",   "Winter OSR",   "Siber. Kale",  "Spring OSR",   "swede",        "swede")
   )
+
+pflzn$accessions_alt <- pflzn$accessions %>%
+  str_replace("Bn", "") %>%
+  str_to_camel(first_upper = T) %>%
+  str_replace("t", "t-")
+
+# Filter KASP for our accessions
+kasp <- kasp_mk130_dna %>%
+  filter(Genotype %in% pflzn$accessions_alt)
 
 # Read in SNP chip data, transpose, give column names from 1st row and trim
 snp_raw <- read.table("MK130_60k_ASSYST_selected.txt", header = T)
@@ -71,12 +82,12 @@ plot(x, cex=0.8, col=popcol,ax1=2, ax2=3)
 allele.num <- nAll(snp_data)
 allele.num.avg <- mean(number_of_alleles)
 
-plot(number_of_alleles, xlab="Loci number", ylab="Number of alleles", 
+plot(allele.num, xlab="Loci number", ylab="Number of alleles", 
      main="Number of alleles per locus")
 
 # calculate allele richness
 allele.rich <- allelic.richness(snp_data,min.n=NULL,diploid=TRUE)
-head(allrich$Ar, 5) # head() call unnecessary?
+head(allele.rich$Ar, 5) # head() call unnecessary?
 
 # calculate observed and expected heterozygosity
 # using adegenet
