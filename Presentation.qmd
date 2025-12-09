@@ -68,3 +68,25 @@ EBLUP:
 3. Calculating multi-trait score using EBLUPs
 
 4. Ranking accessions after overall performance
+
+## Why genetic diversity important??
+
+- And how did we check for diversity in practical??
+- Mention shit like Jost's d, Ho, he maybe??
+- And reason for why diversity cool??
+
+## PCA
+
+- What is PCA?
+- What are the axes?
+- What do the clusters represent?
+
+## KASP? 
+
+- Explain Resistance
+
+## Final choices 
+
+- why??
+- Good perform/bad perform pheno?
+- Good diversity yes?
