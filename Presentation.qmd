@@ -1,0 +1,70 @@
+---
+title: "Phenotypic and Genotypic Evaluation of B. napus Accessions"
+author: "Alisa Anjulie Röring / Sammi Johnson"
+format: revealjs
+editor: visual
+---
+
+## Goal of the project
+
+Overall:
+
+- Select 3 accessions that combine both adaptability and genetic diversity for a future OSR breeding project
+
+Adaptability:
+
+- How good is the overall phenotypic performance of each accession?
+
+Diversity (from genotyping):
+
+- How genetically different are the accessions from each other?​
+
+
+
+## Phenotypical evaluation: Traits
+
+Growth & development:
+
+- Plant height, BBCH
+- Excluded: Flowering time
+
+Biomass:
+
+- Fresh mass, dry mass
+
+Yield component:
+
+- Hundred grain weight
+
+Physiology:
+
+- CCM
+
+Seed quality:
+
+- Proteins, oil, glucosinolates etc
+
+## What are BLUPs and EBLUPs?
+
+BLUP:
+
+- Corrected genetic value
+- Removes environmental + replicate effects
+
+EBLUP:
+
+- Overall mean + BLUP → final corrected performance of each genotype
+
+## Phenotypical evaluation: Pipeline
+
+1. Testing genotypes for significance using LMMs
+
+    - Model: Trait = Genotype + (1 | Rep)
+
+2. Extracting BLUPs and EBLUPs
+
+    - Model: Trait = 1 + (1 | Genotype) + (1 | Rep)
+
+3. Calculating multi-trait score using EBLUPs
+
+4. Ranking accessions after overall performance
