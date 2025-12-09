@@ -41,12 +41,18 @@ snp <- snp[-1,]
 
 
 
-# to only grab our accessions
+# Trim to only grab our accessions
+# NOTE: from here on out, "total" refers to the total field trial, not the 6
 snp_trim <- snp %>%
   filter(row.names(snp) %in% pflzn$accessions)
 
+snp.total <- snp # copy original snp df for reproducibility
+
 indivs <- as.character(rownames(snp_trim))
+indivs.total <- as.character(rownames(snp.total))
 populations <- as.character(snp_trim$type)
+populations.total <- as.character(snp.total$type)
+
 pflzn %>%
   mutate(type = populations)
 
@@ -54,34 +60,51 @@ pflzn %>%
 snp_2_genind <- snp_trim %>%
   select(!type)
 
+snp.total.notype <- snp %>%
+  select(!type)
+
 #### to reduce computing time and allow easy display, we only look at Chromosome A01:
 snp_a01 <- snp_2_genind[,-c(2674:52157)]
+snp.total.a01 <- snp.total.notype[,-c(2674:52157)]
+
 snp_wholegenome <- snp_2_genind
 rm(snp_2_genind, snp_trim) # optional: rm intermediate data objects we're not using anymore
 
 # convert to genind
 snp_data_a01 <- df2genind(snp_a01, ploidy=2, ind.names=indivs, pop=populations, sep="")
+snp.total.data_a01 <- df2genind(snp.total.a01, ploidy=2, ind.names=indivs.total, pop=populations.total, sep="")
 snp_data<-df2genind(snp_wholegenome, ploidy=2, ind.names=indivs, pop=populations, sep="")
 
 
 # GENETIC DISTANCE PCA PLOT
 snp_data_a01_1 <- genind2hierfstat(snp_data_a01)
+snp.total.data_a01.hf <- genind2hierfstat(snp.total.data_a01)
 snp_data_1 <- genind2hierfstat(snp_data)
 
 # calculate PCA 
 w<-indpca(snp_data_a01_1, ind.labels = rownames(snp_data_a01_1))
+w.total <- indpca(snp.total.data_a01.hf, ind.labels = rownames(snp.total.data_a01.hf))
 x<-indpca(snp_data_1, ind.labels = rownames(snp_data_1))
 
 popcol<-c(rep("blue",3), rep("turquoise",3), rep("black",3),rep("purple",3))
 # plot PCA1/2
 plot(w, cex=0.8, col=popcol, ax1=1, ax2=2, main="PCA1~PCA2: ChrA01")
+plot(w.total, cex=0.8, col=popcol, ax1=1, ax2=2, main="PCA1~PCA2: ChrA01, Total Field Trial")
 plot(x, cex=0.8, col=popcol, ax1=1, ax2=2, main="PCA1~PCA2: Genome-Wide")
+
 # plot PCA1/3
 plot(w, cex=0.8, col=popcol,ax1=1, ax2=3, main="PCA1~PCA3: ChrA01")
+plot(w.total, cex=0.8, col=popcol, ax1=1, ax2=3, main="PCA1~PCA3: ChrA01, Total Field Trial")
 plot(x, cex=0.8, col=popcol,ax1=1, ax2=3, main="PCA1~PCA3: Genome-Wide")
+
 # plot PCA2/3
 plot(w, cex=0.8, col=popcol,ax1=2, ax2=3, main="PCA2~PCA3: ChrA01")
+plot(w.total, cex=0.8, col=popcol, ax1=2, ax2=3, main="PCA2~PCA3: ChrA01, Total Field Trial")
 plot(x, cex=0.8, col=popcol,ax1=2, ax2=3, main="PCA2~PCA3: Genome-Wide")
+
+# plotly pca plot with labeled eigenvectors
+
+
 
 # CALC GENETIC DIVERSITY
 
