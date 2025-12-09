@@ -52,8 +52,23 @@ df_ranked
 df_sorted_by_number
 winners
 
+pflzn.winners <- data.frame(
+  accessions = c("BnASSYST_120", "BnASSYST_271", "BnASSYST_424"),
+  name       = c("Darmor",       "Liho",         "Conqueror Bronze Green Top"),
+  type       = c("Winter OSR",   "Spring OSR",   "swede")
+)
 
+pflzn.winners$accessions_alt <- pflzn.winners$accessions %>%
+  str_replace("Bn", "") %>%
+  str_to_camel(first_upper = T) %>%
+  str_replace("t", "t-")
 
+pflzn.winners$accessions_alt2 <- pflzn.winners$accessions_alt %>%
+  str_to_upper()
+
+df.winners <- df %>%
+  filter(Genotype %in% pflzn.winners$accessions_alt2) %>%
+  select(Genotype, Type, Allele, MultiTraitScore)
 
 #ggplot ngl i had a friend help me with this shit
 
