@@ -4,3 +4,11 @@
 .Ruserdata
 *.html
 README.pdf
+*.js
+*.css
+*.map
+*.eot
+*.ttf
+*.woff
+/Presentation_files
+~$Presentation.pptx
